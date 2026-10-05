@@ -1,0 +1,36 @@
+[project]
+name = "icewatch"
+version = "0.1.0"
+description = "Live NHL win probability: streaming play-by-play, a served model, and drift monitoring."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Samin Intisar" }]
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "pandas>=2.2",
+    "pyarrow>=16",
+]
+
+[project.scripts]
+icewatch = "icewatch.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
